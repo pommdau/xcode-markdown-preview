@@ -17,7 +17,7 @@ struct Home: View {
     // MARK: - View
     
     var body: some View {
-        VStack {            
+        VStack {
             if manager.builtProjects.isEmpty {
                 Text("(Waiting for build...)")
             } else {
@@ -28,7 +28,12 @@ struct Home: View {
                 }
             }
             Divider()
-            quitButton()
+            HStack {
+                installXCHookButton()
+                uninstallXCHookButton()
+                Spacer()
+                quitButton()
+            }
         }
         .padding()
     }
@@ -42,12 +47,48 @@ struct Home: View {
     // MARK: - Helpers
     
     @ViewBuilder
+    private func installXCHookButton() -> some View {
+        Button {
+            if let xchook = XCHook() {
+                xchook.install()
+            } else {
+                print("Failed to initialize XCHook; Xcode.plist does not found.")
+            }
+            showAlertIfXcodeIsRunning()
+        } label: {
+            Text("Install XCHook")
+        }
+    }
+    
+    @ViewBuilder
+    private func uninstallXCHookButton() -> some View {
+        Button {
+            if let xchook = XCHook() {
+                xchook.uninstall()
+            } else {
+                print("Failed to initialize XCHook; Xcode.plist does not found.")
+            }
+            showAlertIfXcodeIsRunning()
+        } label: {
+            Text("Uninstall XCHook")
+        }
+    }
+    
+    @ViewBuilder
     private func quitButton() -> some View {
         Button("Quit") {
             NSApplication.shared.terminate(self)
         }
         .buttonStyle(.automatic)
         .frame(maxWidth: .infinity, alignment: .trailing)
+    }
+    
+    private func showAlertIfXcodeIsRunning() {
+        if NSWorkspace.shared.runningApplications
+            .compactMap({ $0.localizedName })
+            .contains("Xcode") {
+            NSAlert.showMessage(messageText: "Xcodeを再起動してください")
+        }
     }
 }
 

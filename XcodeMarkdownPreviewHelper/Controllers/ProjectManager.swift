@@ -5,10 +5,7 @@
 //  Created by HIROKI IKEUCHI on 2023/08/28.
 //
 
-import Foundation
-import AppKit
 import SwiftUI
-import os.log
 import Combine
 import XCHook
 

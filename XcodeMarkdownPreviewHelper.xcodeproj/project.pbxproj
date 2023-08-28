@@ -12,6 +12,7 @@
 		DA78F1D52A9C5790003311AF /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA78F1D42A9C5790003311AF /* Project.swift */; };
 		DA9521902A9C715200B7BE95 /* ProjectRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA95218F2A9C715200B7BE95 /* ProjectRow.swift */; };
 		DA9D9E932A9BC014006F75B5 /* ProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9D9E922A9BC014006F75B5 /* ProjectManager.swift */; };
+		DABF02CD2A9D028200B19714 /* NSAlert+ShowMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABF02CC2A9D028200B19714 /* NSAlert+ShowMessage.swift */; };
 		DAD4F8D62A9970D90064A31D /* XcodeMarkdownPreviewHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD4F8D52A9970D90064A31D /* XcodeMarkdownPreviewHelperApp.swift */; };
 		DAD4F8D82A9970D90064A31D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD4F8D72A9970D90064A31D /* ContentView.swift */; };
 		DAD4F8DA2A9970DA0064A31D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD4F8D92A9970DA0064A31D /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		DA78F1D42A9C5790003311AF /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		DA95218F2A9C715200B7BE95 /* ProjectRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectRow.swift; sourceTree = "<group>"; };
 		DA9D9E922A9BC014006F75B5 /* ProjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManager.swift; sourceTree = "<group>"; };
+		DABF02CC2A9D028200B19714 /* NSAlert+ShowMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAlert+ShowMessage.swift"; sourceTree = "<group>"; };
 		DAD4F8D22A9970D90064A31D /* XcodeMarkdownPreviewHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XcodeMarkdownPreviewHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD4F8D52A9970D90064A31D /* XcodeMarkdownPreviewHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeMarkdownPreviewHelperApp.swift; sourceTree = "<group>"; };
 		DAD4F8D72A9970D90064A31D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				DAD4F8DE2A9970DA0064A31D /* XcodeMarkdownPreviewHelper.entitlements */,
 				DAD4F8D72A9970D90064A31D /* ContentView.swift */,
 				DAD4F8DB2A9970DA0064A31D /* Preview Content */,
+				DABF02CC2A9D028200B19714 /* NSAlert+ShowMessage.swift */,
 			);
 			path = XcodeMarkdownPreviewHelper;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				DAD4F8D82A9970D90064A31D /* ContentView.swift in Sources */,
 				DAD4F8D62A9970D90064A31D /* XcodeMarkdownPreviewHelperApp.swift in Sources */,
 				DA9D9E932A9BC014006F75B5 /* ProjectManager.swift in Sources */,
+				DABF02CD2A9D028200B19714 /* NSAlert+ShowMessage.swift in Sources */,
 				DA78F1D52A9C5790003311AF /* Project.swift in Sources */,
 				DA377F2D2A99FF360070A998 /* Home.swift in Sources */,
 			);

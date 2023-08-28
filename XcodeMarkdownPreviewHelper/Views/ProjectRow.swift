@@ -116,5 +116,7 @@ struct ProjectRow_Previews: PreviewProvider {
     
     static var previews: some View {
         ProjectRow(project: $manager.builtProjects[0], manager: manager)
+            .frame(width: 500)
+            .padding()
     }
 }
