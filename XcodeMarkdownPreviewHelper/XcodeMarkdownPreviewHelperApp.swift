@@ -9,13 +9,17 @@ import SwiftUI
 
 @main
 struct XcodeMarkdownPreviewHelperApp: App {
+    
+    let buildXcodeProjectManager = BuildXcodeProjectManager()
+    
     var body: some Scene {
         WindowGroup {
+//            XCHookDemoView()
 //            ContentView()
-            Home()
-        }        
+            Home(buildXcodeProjectManager: buildXcodeProjectManager)
+        }
         MenuBarExtra {
-            Text("Test")
+//            Home(buildXcodeProjectManager: buildXcodeProjectManager)
         } label: {
             HStack {
                 Image(systemName: "doc.richtext.fill")

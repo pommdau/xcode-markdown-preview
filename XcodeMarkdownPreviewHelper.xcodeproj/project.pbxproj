@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DA377F262A9973ED0070A998 /* .xcodesamplecode.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA377F252A9973ED0070A998 /* .xcodesamplecode.plist */; };
 		DA377F2D2A99FF360070A998 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA377F2C2A99FF360070A998 /* Home.swift */; };
+		DA9D9E932A9BC014006F75B5 /* BuildXcodeProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9D9E922A9BC014006F75B5 /* BuildXcodeProjectManager.swift */; };
 		DAD4F8D62A9970D90064A31D /* XcodeMarkdownPreviewHelperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD4F8D52A9970D90064A31D /* XcodeMarkdownPreviewHelperApp.swift */; };
 		DAD4F8D82A9970D90064A31D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD4F8D72A9970D90064A31D /* ContentView.swift */; };
 		DAD4F8DA2A9970DA0064A31D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD4F8D92A9970DA0064A31D /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		DA377F242A9973A40070A998 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DA377F252A9973ED0070A998 /* .xcodesamplecode.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = .xcodesamplecode.plist; sourceTree = "<group>"; };
 		DA377F2C2A99FF360070A998 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		DA9D9E922A9BC014006F75B5 /* BuildXcodeProjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildXcodeProjectManager.swift; sourceTree = "<group>"; };
 		DAD4F8D22A9970D90064A31D /* XcodeMarkdownPreviewHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XcodeMarkdownPreviewHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD4F8D52A9970D90064A31D /* XcodeMarkdownPreviewHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeMarkdownPreviewHelperApp.swift; sourceTree = "<group>"; };
 		DAD4F8D72A9970D90064A31D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			children = (
 				DA377F272A9979130070A998 /* Resources */,
 				DAD4F8D52A9970D90064A31D /* XcodeMarkdownPreviewHelperApp.swift */,
+				DA9D9E922A9BC014006F75B5 /* BuildXcodeProjectManager.swift */,
 				DA377F2C2A99FF360070A998 /* Home.swift */,
 				DAD4F8D72A9970D90064A31D /* ContentView.swift */,
 				DA377F242A9973A40070A998 /* README.md */,
@@ -166,6 +169,7 @@
 			files = (
 				DAD4F8D82A9970D90064A31D /* ContentView.swift in Sources */,
 				DAD4F8D62A9970D90064A31D /* XcodeMarkdownPreviewHelperApp.swift in Sources */,
+				DA9D9E932A9BC014006F75B5 /* BuildXcodeProjectManager.swift in Sources */,
 				DA377F2D2A99FF360070A998 /* Home.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
