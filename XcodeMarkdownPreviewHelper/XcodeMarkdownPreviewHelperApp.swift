@@ -13,17 +13,16 @@ struct XcodeMarkdownPreviewHelperApp: App {
     let buildXcodeProjectManager = BuildXcodeProjectManager()
     
     var body: some Scene {
-//        WindowGroup {
-////            Home(buildXcodeProjectManager: buildXcodeProjectManager)
-////                .frame(width: 300, height: 300)
-//        }
+        WindowGroup {
+            Home(buildXcodeProjectManager: buildXcodeProjectManager)
+        }
         
         MenuBarExtra {
-            Home(buildXcodeProjectManager: buildXcodeProjectManager)
+//            Home(buildXcodeProjectManager: buildXcodeProjectManager)
         } label: {
             HStack {
                 Image(systemName: "doc.richtext.fill")
-                Text("MD")
+                Text(".md")
             }
         }
         .menuBarExtraStyle(.window)

@@ -13,17 +13,8 @@ struct ProjectRow: View {
    
     var body: some View {
         HStack {
-            Toggle(isOn: $project.isOnPreview) {
-                EmptyView() // Empty view as we don't want to show any label
-            }
-            .toggleStyle(CheckboxToggleStyle())
-            .frame(alignment: .leading)
-            
-            Text(project.name)
-                .frame(minWidth: 200, maxWidth: .infinity, alignment: .leading)
-                .lineLimit(1)
-                .truncationMode(.tail)
-                .help(project.name)
+            previewToggle()
+                        
             Text("\(project.timeStampString)")
                 .frame(minWidth: 140, maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(.secondary)
@@ -34,38 +25,65 @@ struct ProjectRow: View {
                 .truncationMode(.head)
                 .help(project.url.path)
              */
-            Button {
-                // manager.closeapp
-            } label: {
-                Image(systemName: "pin")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 16, height: 16)
-            }
-            .buttonStyle(.borderless)
-            .padding(.trailing, 4)
-            
-            Button {
-                // manager.closeapp
-            } label: {
-                Image(systemName: "folder")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 16, height: 16)
-            }
-            .buttonStyle(.borderless)
-            .padding(.trailing, 4)
-            
-            Button {
-                // manager.closeapp
-            } label: {
-                Image(systemName: "trash")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 16, height: 16)
-            }
-            .buttonStyle(.borderless)
+
+            pinButton()
+                .padding(.trailing, 4)
+            showInFinderButton()
+                .padding(.trailing, 4)
+            removeButton()
         }
+    }
+    
+    @ViewBuilder
+    private func previewToggle() -> some View {
+        Toggle(isOn: $project.isOnPreview) {
+            Text(project.name)
+                .frame(minWidth: 200, maxWidth: .infinity, alignment: .leading)
+                .lineLimit(1)
+                .truncationMode(.tail)
+                .help(project.name)
+        }
+        .toggleStyle(CheckboxToggleStyle())
+        .frame(alignment: .leading)
+    }
+    
+    @ViewBuilder
+    private func pinButton() -> some View {
+        Button {
+            // manager.closeapp
+        } label: {
+            Image(systemName: "pin")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 16, height: 16)
+        }
+        .buttonStyle(.borderless)
+    }
+    
+    @ViewBuilder
+    private func showInFinderButton() -> some View {
+        Button {
+            // manager.closeapp
+        } label: {
+            Image(systemName: "folder")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 16, height: 16)
+        }
+        .buttonStyle(.borderless)
+    }
+    
+    @ViewBuilder
+    private func removeButton() -> some View {
+        Button {
+            // manager.closeapp
+        } label: {
+            Image(systemName: "trash")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 16, height: 16)
+        }
+        .buttonStyle(.borderless)
     }
 }
 
