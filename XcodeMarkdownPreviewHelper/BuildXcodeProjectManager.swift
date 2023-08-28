@@ -13,12 +13,15 @@ import Combine
 import XCHook
 
 class BuildXcodeProjectManager: ObservableObject {
+        
+    @AppStorage("com.BuildXcodeProjectManager.builtProjectsData")
+    private var builtProjectsData: Data = Data()
+    
+    @Published private var cancellables = Set<AnyCancellable>()
+    
     @Published var builtProjects: [Project] = []
-    @AppStorage("com.BuildXcodeProjectManager.builtProjectsData") var builtProjectsData: Data = Data()
-    @Published var cancellables = Set<AnyCancellable>()
     
     init() {
-        
         loadProjectsStatus()
         
         guard let xchook = XCHook() else {

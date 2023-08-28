@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct Project: Codable {
-            
+struct Project: Codable {            
     let uuid: UUID
     let name: String
     let url: URL
