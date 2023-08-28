@@ -54,6 +54,31 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		DA9521912A9C834900B7BE95 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA78F1D42A9C5790003311AF /* Project.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DA9521922A9C834E00B7BE95 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DA9D9E922A9BC014006F75B5 /* BuildXcodeProjectManager.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DA9521932A9C835300B7BE95 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA377F2C2A99FF360070A998 /* Home.swift */,
+				DA95218F2A9C715200B7BE95 /* ProjectRow.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		DAD4F8C92A9970D90064A31D = {
 			isa = PBXGroup;
 			children = (
@@ -73,12 +98,11 @@
 		DAD4F8D42A9970D90064A31D /* XcodeMarkdownPreviewHelper */ = {
 			isa = PBXGroup;
 			children = (
+				DA9521932A9C835300B7BE95 /* Views */,
+				DA9521922A9C834E00B7BE95 /* Controllers */,
+				DA9521912A9C834900B7BE95 /* Models */,
 				DA377F272A9979130070A998 /* Resources */,
 				DAD4F8D52A9970D90064A31D /* XcodeMarkdownPreviewHelperApp.swift */,
-				DA9D9E922A9BC014006F75B5 /* BuildXcodeProjectManager.swift */,
-				DA377F2C2A99FF360070A998 /* Home.swift */,
-				DA95218F2A9C715200B7BE95 /* ProjectRow.swift */,
-				DA78F1D42A9C5790003311AF /* Project.swift */,
 				DA377F242A9973A40070A998 /* README.md */,
 				DAD4F8D92A9970DA0064A31D /* Assets.xcassets */,
 				DAD4F8DE2A9970DA0064A31D /* XcodeMarkdownPreviewHelper.entitlements */,
