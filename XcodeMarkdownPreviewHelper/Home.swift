@@ -34,6 +34,11 @@ struct Home: View {
                 }
             }
         }
+        .onAppear() {
+            for window in NSApplication.shared.windows {
+                window.level = .floating
+            }
+        }
     }
     
     // MARK: - LifeCycle

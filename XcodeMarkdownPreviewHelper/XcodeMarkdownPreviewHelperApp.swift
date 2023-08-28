@@ -15,6 +15,7 @@ struct XcodeMarkdownPreviewHelperApp: App {
     var body: some Scene {
         WindowGroup {
             Home(buildXcodeProjectManager: buildXcodeProjectManager)
+                .frame(width: 300, height: 300)
         }
         
         MenuBarExtra {
