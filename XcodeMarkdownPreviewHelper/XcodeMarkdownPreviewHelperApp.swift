@@ -14,10 +14,9 @@ struct XcodeMarkdownPreviewHelperApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            XCHookDemoView()
-//            ContentView()
             Home(buildXcodeProjectManager: buildXcodeProjectManager)
         }
+        
         MenuBarExtra {
 //            Home(buildXcodeProjectManager: buildXcodeProjectManager)
         } label: {
