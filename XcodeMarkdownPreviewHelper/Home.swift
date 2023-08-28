@@ -23,13 +23,13 @@ struct Home: View {
                     .sorted(by: { project1, project2 in
                         project1.timeStamp < project2.timeStamp
                     })) { project in
-//                    .sorted(by: { $0.0.localizedName! < $1.0.localizedName! }), id: \.0) { project in
-//                    AppRow(app: app, manager: manager)
-                        Text(project.url.path)
+                        HStack {
+                            Text(project.name)
+                            Text("\(project.timeStampString)")
+                                .foregroundColor(.secondary)
+                        }
                 }
             }
-        }
-        .onAppear {
         }
     }
     
