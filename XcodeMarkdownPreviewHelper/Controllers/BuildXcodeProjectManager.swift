@@ -117,4 +117,16 @@ class BuildXcodeProjectManager: ObservableObject {
             self.builtProjects.append(project)
         }
     }
+    
+    func pinButtonTapped(project: Project) {
+        
+    }
+    
+    func showInFinderButtonTapped(project: Project) {
+        NSWorkspace.shared.activateFileViewerSelecting([project.url])
+    }
+    
+    func removeButtonTapped(project: Project) {
+        builtProjects.removeAll(where: { $0.url == project.url })
+    }
 }

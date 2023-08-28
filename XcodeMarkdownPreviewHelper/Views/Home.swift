@@ -20,7 +20,7 @@ struct Home: View {
         
         VStack {
             ForEach($manager.builtProjects) { $project in
-                ProjectRow(project: $project)
+                ProjectRow(project: $project, manager: manager)
             }
             Divider()
             quitButton()

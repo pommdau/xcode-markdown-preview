@@ -10,6 +10,7 @@ import SwiftUI
 struct ProjectRow: View {
     
     @Binding var project: Project
+    @ObservedObject var manager: BuildXcodeProjectManager
    
     var body: some View {
         HStack {
@@ -63,7 +64,7 @@ struct ProjectRow: View {
     @ViewBuilder
     private func showInFinderButton() -> some View {
         Button {
-            // manager.closeapp
+            manager.showInFinderButtonTapped(project: project)
         } label: {
             Image(systemName: "folder")
                 .resizable()
@@ -76,7 +77,7 @@ struct ProjectRow: View {
     @ViewBuilder
     private func removeButton() -> some View {
         Button {
-            // manager.closeapp
+            manager.removeButtonTapped(project: project)
         } label: {
             Image(systemName: "trash")
                 .resizable()
@@ -92,6 +93,6 @@ struct ProjectRow_Previews: PreviewProvider {
     @State static var manager = BuildXcodeProjectManager()
     
     static var previews: some View {
-        ProjectRow(project: $manager.builtProjects[0])
+        ProjectRow(project: $manager.builtProjects[0], manager: manager)
     }
 }
