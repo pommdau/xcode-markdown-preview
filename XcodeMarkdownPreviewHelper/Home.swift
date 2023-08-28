@@ -13,24 +13,15 @@ struct Home: View {
     // MARK: - Properties
     
     @ObservedObject private var manager: BuildXcodeProjectManager
-         
+    
     // MARK: - View
     
     var body: some View {
         VStack {
             VStack {
-                ForEach($manager.builtProjects) { $project in
-                    HStack {
-                        Toggle(isOn: $project.isOnPreview) {
-                            EmptyView() // Empty view as we don't want to show any label
-                        }
-                        .toggleStyle(CheckboxToggleStyle())
-                        .frame(alignment: .leading)
-                        
-                        Text(project.name)
-                        Text("\(project.timeStampString)")
-                            .foregroundColor(.secondary)
-                    }
+                ForEach(manager.builtProjects) { project in
+                    ProjectRow(project: project,
+                               manager: manager)
                 }
             }
         }

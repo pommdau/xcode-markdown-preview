@@ -19,7 +19,12 @@ class BuildXcodeProjectManager: ObservableObject {
     
     @Published private var cancellables = Set<AnyCancellable>()
     
-    @Published var builtProjects: [Project] = []
+    @Published var builtProjects: [Project] = [] {
+        didSet {
+            print("DidSet 🐱")
+            saveProjectsStatus()
+        }
+    }
     
     init() {
         loadProjectsStatus()
@@ -65,7 +70,9 @@ class BuildXcodeProjectManager: ObservableObject {
         if let index = builtProjects.firstIndex(where: { $0.url == project.url }) {
             // 情報を更新
             DispatchQueue.main.async {
-                self.builtProjects[index] = project
+                self.builtProjects[index].name = project.name
+                self.builtProjects[index].status = project.status
+                self.builtProjects[index].timeStamp = project.timeStamp
             }
             return
         }

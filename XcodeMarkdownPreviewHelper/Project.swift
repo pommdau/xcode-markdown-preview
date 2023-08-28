@@ -9,10 +9,10 @@ import Foundation
 
 struct Project: Codable {            
     let uuid: UUID
-    let name: String
+    var name: String
     let url: URL
-    let status: String
-    let timeStamp: Double
+    var status: String
+    var timeStamp: Double
     var isOnPreview: Bool
     
     /// refs: [【Swift】DateFormatterの使い方](https://capibara1969.com/2153/#toc15)
@@ -27,7 +27,7 @@ struct Project: Codable {
                 
         /// 自動フォーマットのスタイル指定
         dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .short
+        dateFormatter.timeStyle = .medium
         
         return dateFormatter
     }()
