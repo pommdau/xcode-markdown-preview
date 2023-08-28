@@ -17,16 +17,16 @@ struct Home: View {
     // MARK: - View
     
     var body: some View {
-        
         VStack {
-            if manager.builtProjects.isEmpty {
-                Text("(Waiting for build...)")
-            } else {
-                ForEach($manager.builtProjects) { $project in
-                    ProjectRow(project: $project, manager: manager)
+            VStack {
+                if manager.builtProjects.isEmpty {
+                    Text("(Waiting for build...)")
+                } else {
+                    ForEach($manager.builtProjects) { $project in
+                        ProjectRow(project: $project, manager: manager)
+                    }
                 }
             }
-            Spacer()
             Divider()
             quitButton()
         }

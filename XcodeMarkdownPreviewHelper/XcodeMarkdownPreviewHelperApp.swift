@@ -18,7 +18,7 @@ struct XcodeMarkdownPreviewHelperApp: App {
         }
         
         MenuBarExtra {
-//            Home(buildXcodeProjectManager: buildXcodeProjectManager)
+            Home(buildXcodeProjectManager: buildXcodeProjectManager)
         } label: {
             HStack {
                 Image(systemName: "doc.richtext.fill")
