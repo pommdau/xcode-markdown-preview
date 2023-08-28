@@ -35,8 +35,18 @@ struct ProjectRow: View {
             .frame(alignment: .leading)
             
             Text(project.name)
+                .frame(minWidth: 100, maxWidth: .infinity, alignment: .leading)
+                .lineLimit(1)
+                .truncationMode(.tail)
+                .help(project.name)
             Text("\(project.timeStampString)")
                 .foregroundColor(.secondary)
+            
+            Text(project.url.path)
+                .frame(minWidth: 100, maxWidth: .infinity, alignment: .leading)
+                .lineLimit(1)
+                .truncationMode(.head)
+                .help(project.url.path)
         }
     }
 }

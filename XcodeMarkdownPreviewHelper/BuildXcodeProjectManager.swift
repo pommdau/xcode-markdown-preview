@@ -21,12 +21,15 @@ class BuildXcodeProjectManager: ObservableObject {
     
     @Published var builtProjects: [Project] = [] {
         didSet {
-            print("DidSet 🐱")
+            syncFileForPreview()
             saveProjectsStatus()
         }
     }
     
+    private var fileForMarkdownPreview = Bundle.main.url(forResource: ".xcodesamplecode", withExtension: "plist")!
+    
     init() {
+//        builtProjectsData = Data()  // デバッグ
         loadProjectsStatus()
         
         guard let xchook = XCHook() else {
@@ -36,13 +39,18 @@ class BuildXcodeProjectManager: ObservableObject {
         xchook.install()
         XCHookReceiver.shared.xchookPublisher
             .sink { event in
+                
+                if event.status != .buildSucceeds {
+                    return
+                }
+                
                 Swift.print("Project: \(event.project)")
                 Swift.print("Project path: \(event.path)")
                 Swift.print("Status: \(event.status.rawValue)")
                 
                 self.registerBuildProject(
                     Project(name: event.project,
-                            url: URL(string: event.path)!,
+                            url: URL(filePath: event.path),
                             status: event.status.rawValue,
                             timeStamp: event.timestamp)
                 )
@@ -58,6 +66,27 @@ class BuildXcodeProjectManager: ObservableObject {
         }
     }
     
+    private func syncFileForPreview() {
+        builtProjects.forEach { project in
+            let existsFile = FileManager.default.fileExists(atPath: project.fileForMarkdownPreview.path)
+            
+            if project.isOnPreview && !existsFile {
+                // Preview ON かつ ファイルが存在しない
+                try! FileManager.default.copyItem(at: fileForMarkdownPreview,
+                                                  to: project.fileForMarkdownPreview)
+
+            } else if !project.isOnPreview && existsFile {
+                // Preview OFF かつ ファイルが存在する
+                do {
+                    try FileManager.default.removeItem(at: project.fileForMarkdownPreview)
+                } catch {
+                    print(project.fileForMarkdownPreview.path)
+                    fatalError(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
     // Save toggleStatus to toggleStatusData
     func saveProjectsStatus() {
         if let builtProjectsData = try? JSONEncoder().encode(builtProjects) {
@@ -67,6 +96,13 @@ class BuildXcodeProjectManager: ObservableObject {
     
     // プロジェクトをアプリに登録
     private func registerBuildProject(_ project: Project) {
+        
+        defer {
+            builtProjects.sort { first, second in
+                first.timeStamp < second.timeStamp
+            }
+        }
+        
         if let index = builtProjects.firstIndex(where: { $0.url == project.url }) {
             // 情報を更新
             DispatchQueue.main.async {

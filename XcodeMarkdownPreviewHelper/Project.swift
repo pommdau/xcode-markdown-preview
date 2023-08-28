@@ -37,6 +37,10 @@ struct Project: Codable {
         return Self.dateFormatter.string(from: date)
     }
     
+    var fileForMarkdownPreview: URL {
+        url.appendingPathComponent(".xcodesamplecode.plist")
+    }
+    
     init(uuid: UUID = UUID(), name: String, url: URL, status: String, timeStamp: Double, isOnPreview: Bool = false) {
         self.uuid = uuid
         self.name = name
