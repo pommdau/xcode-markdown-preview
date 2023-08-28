@@ -13,6 +13,7 @@ struct Project: Codable {
     var status: String
     var timeStamp: Double
     var isOnPreview: Bool
+    var isPinned: Bool
     
     /// refs: [【Swift】DateFormatterの使い方](https://capibara1969.com/2153/#toc15)
     private static let dateFormatter: DateFormatter = {
@@ -40,12 +41,13 @@ struct Project: Codable {
         url.appendingPathComponent(".xcodesamplecode.plist")
     }
     
-    init(name: String, url: URL, status: String, timeStamp: Double, isOnPreview: Bool = false) {
+    init(name: String, url: URL, status: String, timeStamp: Double, isOnPreview: Bool = false, isPinned: Bool = false) {
         self.name = name
         self.url = url
         self.status = status
         self.timeStamp = timeStamp
         self.isOnPreview = isOnPreview
+        self.isPinned = isPinned
     }
 }
 

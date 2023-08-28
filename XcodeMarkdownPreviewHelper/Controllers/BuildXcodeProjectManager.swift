@@ -98,9 +98,15 @@ class BuildXcodeProjectManager: ObservableObject {
     private func registerBuildProject(_ project: Project) {
         
         defer {
-            builtProjects.sort { first, second in
-                first.timeStamp < second.timeStamp
-            }
+            builtProjects
+                .sort { first, second in
+                    if first.isPinned && !second.isPinned {
+                        return true
+                    } else {
+                        // 新しい -> 古い
+                        return first.timeStamp > second.timeStamp
+                    }
+                }
         }
         
         if let index = builtProjects.firstIndex(where: { $0.url == project.url }) {
@@ -119,7 +125,12 @@ class BuildXcodeProjectManager: ObservableObject {
     }
     
     func pinButtonTapped(project: Project) {
-        
+        if let index = builtProjects.firstIndex(where: { $0.url == project.url }) {
+            // 情報を更新
+            DispatchQueue.main.async {
+                self.builtProjects[index].isPinned.toggle()
+            }
+        }
     }
     
     func showInFinderButtonTapped(project: Project) {

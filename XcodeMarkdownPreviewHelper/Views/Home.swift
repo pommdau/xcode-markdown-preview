@@ -19,9 +19,14 @@ struct Home: View {
     var body: some View {
         
         VStack {
-            ForEach($manager.builtProjects) { $project in
-                ProjectRow(project: $project, manager: manager)
+            if manager.builtProjects.isEmpty {
+                Text("(Waiting for build...)")
+            } else {
+                ForEach($manager.builtProjects) { $project in
+                    ProjectRow(project: $project, manager: manager)
+                }
             }
+            Spacer()
             Divider()
             quitButton()
         }

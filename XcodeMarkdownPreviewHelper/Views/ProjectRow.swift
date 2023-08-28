@@ -26,7 +26,6 @@ struct ProjectRow: View {
                 .truncationMode(.head)
                 .help(project.url.path)
              */
-
             pinButton()
                 .padding(.trailing, 4)
             showInFinderButton()
@@ -51,12 +50,13 @@ struct ProjectRow: View {
     @ViewBuilder
     private func pinButton() -> some View {
         Button {
-            // manager.closeapp
+            manager.pinButtonTapped(project: project)
         } label: {
-            Image(systemName: "pin")
+            Image(systemName: project.isPinned ? "pin.fill" : "pin")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 16, height: 16)
+                .help("Pin this project")
         }
         .buttonStyle(.borderless)
     }
@@ -70,6 +70,7 @@ struct ProjectRow: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 16, height: 16)
+                .help("Show in Finder")
         }
         .buttonStyle(.borderless)
     }
@@ -83,6 +84,7 @@ struct ProjectRow: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 16, height: 16)
+                .help("Remove from the list")
         }
         .buttonStyle(.borderless)
     }
