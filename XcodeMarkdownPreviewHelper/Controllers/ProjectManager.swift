@@ -12,7 +12,7 @@ import os.log
 import Combine
 import XCHook
 
-class BuildXcodeProjectManager: ObservableObject {
+class ProjectManager: ObservableObject {
         
     @AppStorage("com.BuildXcodeProjectManager.builtProjectsData")
     private var builtProjectsData: Data = Data()
@@ -30,8 +30,11 @@ class BuildXcodeProjectManager: ObservableObject {
     
     init() {
 //        builtProjectsData = Data()  // デバッグ
-        loadProjectsStatus()
-        
+        loadSavedProjectsStatus()
+        setupXCHook()
+    }
+    
+    private func setupXCHook() {
         guard let xchook = XCHook() else {
             fatalError("Failed to initialize XCHook; Xcode.plist does not found.")
         }
@@ -39,15 +42,12 @@ class BuildXcodeProjectManager: ObservableObject {
         xchook.install()
         XCHookReceiver.shared.xchookPublisher
             .sink { event in
-                
                 if event.status != .buildSucceeds {
                     return
                 }
-                
                 Swift.print("Project: \(event.project)")
                 Swift.print("Project path: \(event.path)")
                 Swift.print("Status: \(event.status.rawValue)")
-                
                 self.registerBuildProject(
                     Project(name: event.project,
                             url: URL(filePath: event.path),
@@ -60,7 +60,7 @@ class BuildXcodeProjectManager: ObservableObject {
     }
     
     // Synchronize toggleStatus with toggleStatusData
-    private func loadProjectsStatus() {
+    private func loadSavedProjectsStatus() {
         if let builtProjects = try? JSONDecoder().decode([Project].self, from: builtProjectsData) {
             self.builtProjects = builtProjects
         }
@@ -94,43 +94,44 @@ class BuildXcodeProjectManager: ObservableObject {
         }
     }
     
-    // プロジェクトをアプリに登録
-    private func registerBuildProject(_ project: Project) {
-        
-        defer {
-            builtProjects
-                .sort { first, second in
-                    if first.isPinned && !second.isPinned {
-                        return true
-                    } else {
-                        // 新しい -> 古い
-                        return first.timeStamp > second.timeStamp
-                    }
+    private func sortProjects() {
+        builtProjects
+            .sort { first, second in
+                if first.isPinned != second.isPinned {
+                    return first.isPinned
+                } else {
+                    // 新しい -> 古い
+                    return first.timeStamp > second.timeStamp
                 }
-        }
-        
-        if let index = builtProjects.firstIndex(where: { $0.url == project.url }) {
-            // 情報を更新
-            DispatchQueue.main.async {
-                self.builtProjects[index].name = project.name
-                self.builtProjects[index].status = project.status
-                self.builtProjects[index].timeStamp = project.timeStamp
             }
-            return
-        }
-        
-        DispatchQueue.main.async {
-            self.builtProjects.append(project)
-        }
     }
     
-    func pinButtonTapped(project: Project) {
+    // プロジェクトをアプリに登録
+    private func registerBuildProject(_ project: Project) {
+
         if let index = builtProjects.firstIndex(where: { $0.url == project.url }) {
             // 情報を更新
-            DispatchQueue.main.async {
-                self.builtProjects[index].isPinned.toggle()
-            }
+            self.builtProjects[index].name = project.name
+            self.builtProjects[index].status = project.status
+            self.builtProjects[index].timeStamp = project.timeStamp
+            sortProjects()
+            return
         }
+        self.builtProjects.append(project)
+        sortProjects()
+    }
+}
+
+// MARK: - Buttons Action
+
+extension ProjectManager {
+    func pinButtonTapped(project: Project) {
+        guard let index = builtProjects.firstIndex(where: { $0.url == project.url }) else {
+            return
+        }
+        // 情報を更新
+        builtProjects[index].isPinned.toggle()
+        sortProjects()
     }
     
     func showInFinderButtonTapped(project: Project) {

@@ -12,7 +12,7 @@ struct Home: View {
     
     // MARK: - Properties
     
-    @ObservedObject private var manager: BuildXcodeProjectManager
+    @ObservedObject private var manager: ProjectManager
     
     // MARK: - View
     
@@ -35,8 +35,8 @@ struct Home: View {
     
     // MARK: - LifeCycle
     
-    init(buildXcodeProjectManager: BuildXcodeProjectManager) {
-        self.manager = buildXcodeProjectManager
+    init(manager: ProjectManager) {
+        self.manager = manager
     }
     
     // MARK: - Helpers
@@ -53,6 +53,6 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home(buildXcodeProjectManager: BuildXcodeProjectManager())
+        Home(manager: ProjectManager())
     }
 }

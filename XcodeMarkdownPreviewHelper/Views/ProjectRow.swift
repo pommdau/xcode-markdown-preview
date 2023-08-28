@@ -10,7 +10,7 @@ import SwiftUI
 struct ProjectRow: View {
     
     @Binding var project: Project
-    @ObservedObject var manager: BuildXcodeProjectManager
+    @ObservedObject var manager: ProjectManager
    
     var body: some View {
         HStack {
@@ -92,7 +92,7 @@ struct ProjectRow: View {
 
 struct ProjectRow_Previews: PreviewProvider {
     
-    @State static var manager = BuildXcodeProjectManager()
+    @State static var manager = ProjectManager()
     
     static var previews: some View {
         ProjectRow(project: $manager.builtProjects[0], manager: manager)
