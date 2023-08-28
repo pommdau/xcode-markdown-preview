@@ -16,7 +16,7 @@ struct ProjectRow: View {
         HStack {
             previewToggle()
                         
-            Text("\(project.timeStampString)")
+            Text("\(lastBuiltText)")
                 .frame(minWidth: 140, maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(.secondary)
             /*
@@ -34,6 +34,26 @@ struct ProjectRow: View {
         }
     }
     
+    var lastBuiltText: String {
+        let timeintervalSeconds = Int(manager.referencedDate - Date(timeIntervalSince1970: project.timeStamp))
+        if timeintervalSeconds < 60 {
+            return "> 1 min before"
+        }
+        
+        let timeintervalMinutes = Int(timeintervalSeconds / 60)
+        if timeintervalMinutes < 60 {
+            return "\(timeintervalMinutes) mins before"
+        }
+        
+        let timeintervalHours = Int(timeintervalSeconds / 3600)
+        if timeintervalHours < 24 {
+            return "\(timeintervalHours) hours before"
+        }
+        
+        // 1日以上前は日付を返す
+        return project.timeStampString
+    }
+    
     @ViewBuilder
     private func previewToggle() -> some View {
         Toggle(isOn: $project.isOnPreview) {
@@ -43,7 +63,7 @@ struct ProjectRow: View {
                 .truncationMode(.tail)
                 .help(project.name)
         }
-        .toggleStyle(CheckboxToggleStyle())
+        .toggleStyle(.checkbox)
         .frame(alignment: .leading)
     }
     

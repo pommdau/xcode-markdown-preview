@@ -21,10 +21,15 @@ class ProjectManager: ObservableObject {
     
     @Published var builtProjects: [Project] = [] {
         didSet {
+            referencedDate = .now
             syncFileForPreview()
             saveProjectsStatus()
         }
     }
+    
+    // ビルドがいつ行われたかを計算するときの基準日時
+    @Published var referencedDate: Date = .now
+    private var referencedDateTimer: Timer?
     
     private var fileForMarkdownPreview = Bundle.main.url(forResource: ".xcodesamplecode", withExtension: "plist")!
     
@@ -32,6 +37,12 @@ class ProjectManager: ObservableObject {
 //        builtProjectsData = Data()  // デバッグ
         loadSavedProjectsStatus()
         setupXCHook()
+        
+        referencedDateTimer = Timer.scheduledTimer(withTimeInterval: 60,
+                                                   repeats: true,
+                                                   block: { _ in
+            self.referencedDate = .now
+        })
     }
     
     private func setupXCHook() {

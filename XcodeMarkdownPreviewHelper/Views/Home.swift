@@ -17,11 +17,11 @@ struct Home: View {
     // MARK: - View
     
     var body: some View {
-        VStack {
-            VStack {
-                if manager.builtProjects.isEmpty {
-                    Text("(Waiting for build...)")
-                } else {
+        VStack {            
+            if manager.builtProjects.isEmpty {
+                Text("(Waiting for build...)")
+            } else {
+                VStack {
                     ForEach($manager.builtProjects) { $project in
                         ProjectRow(project: $project, manager: manager)
                     }
