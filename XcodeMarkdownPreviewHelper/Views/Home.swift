@@ -17,19 +17,15 @@ struct Home: View {
     // MARK: - View
     
     var body: some View {
+        
         VStack {
-            VStack {
-                ForEach(manager.builtProjects) { project in
-                    ProjectRow(project: project,
-                               manager: manager)
-                }
+            ForEach($manager.builtProjects) { $project in
+                ProjectRow(project: $project)
             }
+            Divider()
+            quitButton()
         }
-        .onAppear() {
-            for window in NSApplication.shared.windows {
-                window.level = .floating
-            }
-        }
+        .padding()
     }
     
     // MARK: - LifeCycle
@@ -39,6 +35,15 @@ struct Home: View {
     }
     
     // MARK: - Helpers
+    
+    @ViewBuilder
+    private func quitButton() -> some View {
+        Button("Quit") {
+            NSApplication.shared.terminate(self)
+        }
+        .buttonStyle(.automatic)
+        .frame(maxWidth: .infinity, alignment: .trailing)
+    }
 }
 
 struct Home_Previews: PreviewProvider {

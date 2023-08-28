@@ -8,7 +8,6 @@
 import Foundation
 
 struct Project: Codable {            
-    let uuid: UUID
     var name: String
     let url: URL
     var status: String
@@ -41,8 +40,7 @@ struct Project: Codable {
         url.appendingPathComponent(".xcodesamplecode.plist")
     }
     
-    init(uuid: UUID = UUID(), name: String, url: URL, status: String, timeStamp: Double, isOnPreview: Bool = false) {
-        self.uuid = uuid
+    init(name: String, url: URL, status: String, timeStamp: Double, isOnPreview: Bool = false) {
         self.name = name
         self.url = url
         self.status = status
@@ -52,5 +50,5 @@ struct Project: Codable {
 }
 
 extension Project: Identifiable {
-    var id: String { uuid.uuidString }
+    var id: String { url.path }
 }
