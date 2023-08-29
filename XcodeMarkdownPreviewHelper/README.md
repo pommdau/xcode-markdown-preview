@@ -1,27 +1,10 @@
+# README
+## 参考
+- MagicQuitにインスパイアされた。
+    - [一定時間使用していないアプリを自動的に終了してくれるMac用ユーティリティ「MagicQuit」がリリース。](https://applech2.com/archives/20230825-magicquit-for-mac-automatically-closes-apps.html)
+	- [More focus with MagicQuit](https://magicquit.com/)
+	- [magicquit/MagicQuit/ContentView\.swift](https://github.com/BigBerny/magicquit/blob/main/MagicQuit/ContentView.swift)
+- アイコンの参考に
+    - [macOS 11 Big Sur/Xcode 12のMarkdownファイルのアイコンには「Think Different」のイースターエッグが隠されているもよう。](https://applech2.com/archives/20200707-macos-11-big-sur-markdown-icon-easter-egg.html)
 
-
-# Markdown Sample
-
-This is a sample markdown file.
-
-## Lists
-
-### Unordered List
-
-- Item 1
-- Item 2
-- Item 3
-
-### Ordered List
-
-1. Item 1
-2. Item 2
-3. Item 3
-
-## Emphasis
-
-*Italic*, **Bold**, ***Bold and Italic***
-
-## Links
-
-[GitHub](https://github.com)
+<img width="400" alt="image" src="https://i.imgur.com/QVjTd78.png">
