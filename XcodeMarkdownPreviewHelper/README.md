@@ -25,9 +25,3 @@ This is a sample markdown file.
 ## Links
 
 [GitHub](https://github.com)
-
-## Images
-
-![GitHub Logo](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png)
-
-## Code

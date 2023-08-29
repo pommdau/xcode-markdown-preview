@@ -101,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				DAD4F8D52A9970D90064A31D /* XcodeMarkdownPreviewHelperApp.swift */,
+				DABF02CC2A9D028200B19714 /* NSAlert+ShowMessage.swift */,
 				DA9521932A9C835300B7BE95 /* Views */,
 				DA9521922A9C834E00B7BE95 /* Controllers */,
 				DA9521912A9C834900B7BE95 /* Models */,
@@ -110,7 +111,6 @@
 				DAD4F8DE2A9970DA0064A31D /* XcodeMarkdownPreviewHelper.entitlements */,
 				DAD4F8D72A9970D90064A31D /* ContentView.swift */,
 				DAD4F8DB2A9970DA0064A31D /* Preview Content */,
-				DABF02CC2A9D028200B19714 /* NSAlert+ShowMessage.swift */,
 			);
 			path = XcodeMarkdownPreviewHelper;
 			sourceTree = "<group>";
