@@ -1,4 +1,7 @@
 # xcode-markdown-preview
+
+<img width="400" alt="image" src="https://i.imgur.com/ekDJWnZ.png">
+
 - Xcode上で.mdの生文字列とプレビューの切り替えをサポートします(Beta版のため動作が不安定です)
 - 最近のビルドしたものが自動でリストアップされます
 
