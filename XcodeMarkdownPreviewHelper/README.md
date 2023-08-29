@@ -8,3 +8,8 @@
     - [macOS 11 Big Sur/Xcode 12のMarkdownファイルのアイコンには「Think Different」のイースターエッグが隠されているもよう。](https://applech2.com/archives/20200707-macos-11-big-sur-markdown-icon-easter-egg.html)
 
 <img width="400" alt="image" src="https://i.imgur.com/QVjTd78.png">
+
+- HCHook
+	- [Hacking Xcode Behaviors / macOS native symposium \#08](https://speakerdeck.com/kyome22/macos-native-symposium-number-08)
+	- [XCMonitor](https://github.com/Kyome22/XCMonitor)
+	- [Kyome22/XCHook](https://github.com/Kyome22/XCHook)
